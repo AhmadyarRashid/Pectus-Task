@@ -9,17 +9,12 @@ data for your work) data in tabular form and letting user to perform some basic 
 - I should able to see total sum of value in amount column
 
 ## Setups and Run Project
-
 In the project directory, you can run:
 
 ### `yarn install`
 Install all necessary packages for project.
 
 ### `yarn start`
-
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
