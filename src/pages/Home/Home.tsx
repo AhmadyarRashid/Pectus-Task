@@ -7,7 +7,13 @@ function HomePage() {
   return (
     <Container>
       <SortableTable
-        header={['Departments', 'Project Name', 'Amount', 'Date', 'Name']}
+        header={[
+          { title: 'Departments', key: 'departments' },
+          { title: 'Project Name', key: 'projectName' },
+          { title: 'Amount', key: 'amount' },
+          { title: 'Date', key: 'date' },
+          { title: 'Name', key: 'memberName' }
+        ]}
         data={data}
       />
     </Container>
