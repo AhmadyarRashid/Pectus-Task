@@ -1,6 +1,7 @@
 import React from 'react';
 import useSortableData from '../../customHooks/useSortableData';
-import { TableContainer, Table, Thead, TH, TD } from './SortableTable.styled';
+import { TableContainer, Table, Thead } from '../../utils/styledComponent/table.styled';
+import { TH, TD } from './SortableTable.styled';
 import { IExpense } from '../../types/expense';
 
 interface HeaderProps {

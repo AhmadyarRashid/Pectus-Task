@@ -1,7 +1,7 @@
 import React from 'react';
-import data from '../../constant/data.json';
 import SortableTable from '../../components/SortableTable/SortableTable';
-import { Container } from './Home.styled';
+import { Container } from '../../utils/styledComponent/common.styled';
+import data from '../../constant/data.json';
 
 function HomePage() {
   return (
