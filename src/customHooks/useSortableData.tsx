@@ -13,7 +13,10 @@ interface configProps {
 const useSortableData = (items: any, config: configProps = { key: '', direction: '' }) => {
   const [sortConfig, setSortConfig] = useState(config);
 
+  // sort list according to sortConfig
+  // useMemo because it will not calculate every time. it must be re-calculate if dependent variable will change
   const sortedItems = useMemo(() => {
+    // create new copy of items because sort function update its own list variable
     const sortableItems = [...items];
     if (sortConfig !== null) {
       const { key, direction } = sortConfig;
@@ -30,6 +33,7 @@ const useSortableData = (items: any, config: configProps = { key: '', direction:
     return sortableItems;
   }, [items, sortConfig]);
 
+  // invert selected column sorting order by default order must be ascending
   const requestSort = (key: string) => {
     let direction = 'ascending';
     if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {

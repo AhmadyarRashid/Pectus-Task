@@ -8,6 +8,7 @@ interface Props {
 }
 
 function SummarizeTable({ category, data }: Props) {
+  // calculate total amount
   const totalAmount = Object.values(data).reduce(
     (previousValue, currentValue) => Number(previousValue) + Number(currentValue),
     0

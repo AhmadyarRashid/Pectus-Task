@@ -3,8 +3,9 @@ import Dropdown from '../../components/Dropdown/Dropdown';
 import SummarizeTable from '../../components/SummarizeTable/SummarizeTable';
 import { Container } from '../../utils/styledComponent/common.styled';
 import { HeaderWrapper } from './ExoenseByGroup.styled';
-import expenseData from '../../constant/data.json';
 import { IExpense } from '../../types/expense';
+import expenseData from '../../constant/data.json';
+import { expenseCategory } from '../../constant/constants';
 
 function ExpenseByGroup() {
   const [selectedGroup, setGroup] = useState({
@@ -15,21 +16,26 @@ function ExpenseByGroup() {
   const { key } = selectedGroup;
   const data = expenseData.reduce(
     (expenseSummary: any, { departments, amount, projectName, date, memberName }: IExpense) => {
+      // Firstly decide on which category we implement group by functionality
       let groupedBy;
-      if (key === 'projectName') {
+      if (key === expenseCategory.projectName) {
         groupedBy = projectName;
-      } else if (key === 'date') {
+      } else if (key === expenseCategory.date) {
         groupedBy = date;
-      } else if (key === 'memberName') {
+      } else if (key === expenseCategory.memberName) {
         groupedBy = memberName;
       } else {
         groupedBy = departments;
       }
+      // remove current icon and commas from amount
       const amountInNumberWithPoints = amount.slice(0, amount.length - 1).replace(/,/g, '');
+      // remove extra zero after point
       const actualAmount = Number(
         amountInNumberWithPoints.slice(0, amountInNumberWithPoints.indexOf('.'))
       );
+      // handle scenario first time initial amount must be zero 0
       if (!expenseSummary[groupedBy]) expenseSummary[groupedBy] = 0;
+      // Sum all amounts against category groups
       expenseSummary[groupedBy] += actualAmount;
       return expenseSummary;
     },
