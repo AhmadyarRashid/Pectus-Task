@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
+import useSortableData from '../../customHooks/useSortableData';
 import { TableContainer, Table, Thead, TH, TD } from './SortableTable.styled';
 import { IExpense } from '../../types/expense';
 
@@ -11,37 +12,6 @@ interface Props {
   data: IExpense[];
   header: HeaderProps[];
 }
-
-const useSortableData = (items: any, config = { key: '', direction: '' }) => {
-  const [sortConfig, setSortConfig] = useState(config);
-
-  const sortedItems = useMemo(() => {
-    const sortableItems = [...items];
-    if (sortConfig !== null) {
-      const { key, direction } = sortConfig;
-      sortableItems.sort((a, b) => {
-        if (a[key] < b[key]) {
-          return direction === 'ascending' ? -1 : 1;
-        }
-        if (a[key] > b[key]) {
-          return direction === 'ascending' ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-    return sortableItems;
-  }, [items, sortConfig]);
-
-  const requestSort = (key: string) => {
-    let direction = 'ascending';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    }
-    setSortConfig({ key, direction });
-  };
-
-  return { items: sortedItems, requestSort, sortConfig };
-};
 
 function SortableTable({ header, data }: Props) {
   const { items, requestSort } = useSortableData(data);
