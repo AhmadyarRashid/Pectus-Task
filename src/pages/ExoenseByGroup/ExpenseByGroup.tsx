@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import SummarizeTable from '../../components/SummarizeTable/SummarizeTable';
-import { Container } from '../../utils/styledComponent/common.styled';
+import { Container, StyleLink } from '../../utils/styledComponent/common.styled';
 import { HeaderWrapper } from './ExoenseByGroup.styled';
 import { IExpense } from '../../types/expense';
 import expenseData from '../../constant/data.json';
@@ -43,6 +43,10 @@ function ExpenseByGroup() {
   );
   return (
     <Container>
+      <p>
+        Click here for&nbsp;&nbsp;
+        <StyleLink to="/">Home Page</StyleLink>
+      </p>
       <HeaderWrapper>
         <Dropdown
           onChange={setGroup}

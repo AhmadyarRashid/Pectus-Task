@@ -1,11 +1,15 @@
 import React from 'react';
 import SortableTable from '../../components/SortableTable/SortableTable';
-import { Container } from '../../utils/styledComponent/common.styled';
+import { Container, StyleLink } from '../../utils/styledComponent/common.styled';
 import data from '../../constant/data.json';
 
 function HomePage() {
   return (
     <Container>
+      <p>
+        Click here for&nbsp;&nbsp;
+        <StyleLink to="/filterByExpense">Filter By Group</StyleLink>
+      </p>
       <SortableTable
         header={[
           { title: 'Departments', key: 'departments' },

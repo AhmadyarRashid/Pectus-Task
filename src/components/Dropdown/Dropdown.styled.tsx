@@ -4,7 +4,7 @@ export const DropdownWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 40%;
+  min-width: 40%;
 `;
 
 export const DropdownLabel = styled.label`
